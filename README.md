@@ -1,1 +1,1 @@
-# seafile-scrapper
+# seafile-scraper
