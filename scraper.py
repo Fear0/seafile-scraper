@@ -1,4 +1,5 @@
 from selenium import webdriver
+from private import cred
 import time
 import re
 import os 
@@ -28,10 +29,7 @@ except OSError:
 else:
     print ("Successfully created the directory %s " % download_path)
 
-payload = {
-    'username' : 'HWR-CKL',
-    'password' : 'antimageForever'
-}
+
 base_url = 'https://seafile.cloud.uni-hannover.de'
 url = 'https://seafile.cloud.uni-hannover.de/sso'
 
@@ -44,8 +42,8 @@ driver = webdriver.Chrome("C:/Users/ASUS/Downloads/chromedriver.exe",chrome_opti
 
 driver.get(url)
 
-driver.find_element_by_id("username").send_keys(payload['username'])
-driver.find_element_by_id("password").send_keys(payload['password'])
+driver.find_element_by_id("username").send_keys(cred['username'])
+driver.find_element_by_id("password").send_keys(cred['password'])
 driver.find_element_by_name('_eventId_proceed').click()
 
 print('logged in')
