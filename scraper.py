@@ -77,6 +77,7 @@ r = requests.get("your url", cookies=cook)
 
 You can also use the mechanize library which is easy to handle but doesn't support javascript neither.
 
+#SCRIPT WITH REQUESTS LIBRARY STARTS HERE
 
 # start HTTP request session
 s = requests.Session()
@@ -132,7 +133,7 @@ print(soup.prettify())
 shared_libs_url = base_url + '/shared-libs/'
 driver.get(shared_libs_url)
 driver.get(base_url+ '/library/ab5502b7-3d56-45b2-8d65-24566eb2ee34/Ahmed_Korrekturen/')
-
+driver.implicitly_wait(10)
 # Not all queried html elements will be retrieved if page not fully loade, wait...
 time.sleep(1)
 lnks=driver.find_elements_by_tag_name("a")
