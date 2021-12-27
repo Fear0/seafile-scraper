@@ -90,9 +90,8 @@ r1 = s.get(url1, headers = header_data)
 
 # Prepare for second request - extract URL action for next POST from response, append header, and add login credentials
 ss1 = re.search('action="', r1.text)
-#print(ss1.span(0)[1])
-soup = BeautifulSoup(r1.content,'html.parser')
-#print(soup.prettify())
+
+# this regular expression search is also very specific. You need to look at the html source of your website
 ss2 = re.search('" method', r1.text)
 print(r1.text[ss1.span(0)[1]:ss2.span(0)[0]])
 #adjust first part...
