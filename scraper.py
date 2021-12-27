@@ -63,7 +63,7 @@ print('Login successfull')
 
 '''
 
-The following snipped of commented code is an alternative way to perform a sso login using the requests library.
+The following snippet of commented code is an alternative way to perform a sso login using the requests library.
 However, you should manually adjust the parameters of the saml request and response. SAML is the intermediate that allows
 the user to identify himself by the idp and then login into the sp. This snippet is inspired from "https://stackoverflow.com/questions/16512965/logging-into-saml-shibboleth-authenticated-server-using-python/23930373#23930373"
 you need to adjust the headers according to the website you want to get or post as well as the saml response parameters.
@@ -81,7 +81,7 @@ You can also use the mechanize library which is easy to handle but doesn't suppo
 # start HTTP request session
 s = requests.Session()
 
-# Prepare for first request
+# Prepare for first request, change url1
 url1 = "https://studip.uni-hannover.de/Shibboleth.sso/Login?target=https%3A%2F%2Fstudip.uni-hannover.de%2Fdispatch.php%2Fmy_courses%3Fsso%3Dshib%26again%3Dyes%26cancel_login%3D1&entityID=https%3A%2F%2Fsso.idm.uni-hannover.de%2Fidp%2Fshibboleth"
 header_data = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'}
 
@@ -98,7 +98,7 @@ print(r1.text[ss1.span(0)[1]:ss2.span(0)[0]])
 #adjust first part...
 url2 = 'https://sso.idm.uni-hannover.de' + r1.text[ss1.span(0)[1]:ss2.span(0)[0]]
 header_data.update({'Accept-Encoding': 'gzip, deflate, br', 'Content-Type': 'application/x-www-form-urlencoded'})
-cred = {'j_username': 'HWR-CKL', 'j_password':'antimageForever', '_eventId_proceed' : 'Sign in'}
+cred = {'j_username': 'your username', 'j_password':'your password', '_eventId_proceed' : 'Sign in'}
 
 # Make second request
 r2 = s.post(url2, data = cred)
